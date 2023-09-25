@@ -57,13 +57,14 @@ export class RemoveObjectsPage {
         await this.downloadButton.waitFor()
         await this.downloadButton.click()
 
-        await this.page.waitForTimeout(100000) // Pause for 10 seconds
+        // await this.page.waitForTimeout(10000) // Pause for 10 seconds
 
     }
 
 
     downloadFile = async () => {
         await this.dowloadFreeButton.waitFor()
+        
         // Trigger the download action -> click on DownloadHD button
         await this.dowloadFreeButton.click()
 
