@@ -3,7 +3,6 @@ import { expect } from "@playwright/test"
 export class RemoveObjectsPage {
     constructor(page){
         this.page = page
-        this.prooductsDropDown = page.locator('[class="H14B inline-flex items-center space-x-1.5 cursor-pointer px-3 py-2 rounded-lg transition hover:bg-blue-100 hover:text-blue-500 bg-blue-100 text-blue-500"]')
         this.demoImage = page.locator('li.inline-block button')
         this.autoAIButton = page.locator('[class="py-3 border-b-2 text-sm font-semibold cursor-pointer text-center border-gray-200 text-neutral"]')
         this.objectFounded = page.locator('[class="flex-auto"]')
@@ -58,7 +57,7 @@ export class RemoveObjectsPage {
         await this.downloadButton.waitFor()
         await this.downloadButton.click()
 
-        await this.page.waitForTimeout(100000); // Pause for 10 seconds
+        await this.page.waitForTimeout(100000) // Pause for 10 seconds
 
     }
 
@@ -81,7 +80,6 @@ export class RemoveObjectsPage {
 
         // Assertions download file path is not null -> if not null it mean file download successful = passed
         expect(downloadedFilePath).not.toBeNull(); // Ensure a file path is available.
-
     }
 
 }
