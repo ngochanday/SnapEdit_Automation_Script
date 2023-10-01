@@ -7,31 +7,31 @@ test.describe('suite 1', () => {
         const removeObjectsPage = new RemoveObjectsPage(page)
         removeObjectsPage.visit()
     
-        // await page.pause()
-        await page.waitForTimeout(3000)
+        await page.pause()
+        // await page.waitForTimeout(3000)
 
     
         removeObjectsPage.goToEditPage()
     
-        // await page.pause()
-        await page.waitForTimeout(3000)
+        await page.pause()
+        // await page.waitForTimeout(3000)
 
     
         removeObjectsPage.useAutoAI()
     
-        // await page.pause()
-        await page.waitForTimeout(3000)
+        await page.pause()
+        // // await page.waitForTimeout(3000)
     
         removeObjectsPage.removeObjects()
     
-        // await page.pause()
-        await page.waitForTimeout(10000)
+        await page.pause()
+        // // await page.waitForTimeout(10000)
 
 
         removeObjectsPage.downloadFile()
     
-        // await page.pause()
-        await page.waitForTimeout(3000)
+        await page.pause()
+        // // await page.waitForTimeout(3000)
 
     })
     
@@ -41,19 +41,20 @@ test.describe('suite 1', () => {
 
         enhancerPage.goToEnhancerPage()
     
-        // await page.pause()
-        await page.waitForTimeout(3000)
+        await page.pause()
+        // await page.waitForTimeout(3000)
     
         enhancerPage.goToEnhancerEditPage()
     
-        // await page.pause() 
-        await page.waitForTimeout(3000)
+        await page.pause() 
+        // await page.waitForTimeout(3000)
 
     
         enhancerPage.downloadEnhancerFile()
 
-        await page.waitForTimeout(3000)
-        // await page.pause()
+        await page.pause()
+        // await page.waitForTimeout(3000)
+
     
     })
 })

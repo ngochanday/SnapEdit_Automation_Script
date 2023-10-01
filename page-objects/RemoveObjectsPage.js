@@ -3,14 +3,14 @@ import { expect } from "@playwright/test"
 export class RemoveObjectsPage {
     constructor(page){
         this.page = page
-        this.demoImage = page.locator('li.inline-block button')
-        this.autoAIButton = page.locator('[class="py-3 border-b-2 text-sm font-semibold cursor-pointer text-center border-gray-200 text-neutral"]')
+        this.listDemoImages = page.locator('//ul[@id="list-demo-img"]//li')
+        this.autoAIButton = page.locator('[id="ai-auto-tab"]')
         this.objectFounded = page.locator('[class="flex-auto"]')
-        this.selectAllButton = page.locator('[class="text-blue-500 flex justify-end items-center cursor-pointer"]')
-        this.removeButton = page.locator('[class="px-4 pb-4"]')
+        this.selectAllButton = page.locator('[id="select-all-obj-button"]')
+        this.removeButton = page.locator('[id="remove-button"]')
         this.objectItems = page.locator('[class="flex-1 overflow-auto"]')
-        this.downloadButton = page.locator('[class="inline-block align-middle py-3 px-4"]')
-        this.dowloadFreeButton = page.locator('[class="btn block w-full py-3 px-4 bg-primary text-white rounded-lg text-base transition hover:bg-opacity-80 focus:bg-primary-focus focus:text-white w-full font-medium"]')
+        this.downloadButton = page.locator('//div[@id="mobile-download-button"]')
+        this.dowloadFreeButton = page.locator('[id="download-hd-button"]')
     }
 
     //define go to Remove Objects Page method
@@ -19,12 +19,11 @@ export class RemoveObjectsPage {
     }
 
 
-    goToEditPage = 
-    async () => {
-        const demoImage =  this.demoImage.first()
-        //Tap on first demo image -> go to Edit page
-        await demoImage.waitFor()
-        await demoImage.click()
+    goToEditPage = async () => {
+        const demoImg = this.listDemoImages.first()
+
+        await demoImg.waitFor()
+        await demoImg.click()
     }
 
 
@@ -57,7 +56,7 @@ export class RemoveObjectsPage {
         await this.downloadButton.waitFor()
         await this.downloadButton.click()
 
-        // await this.page.waitForTimeout(10000) // Pause for 10 seconds
+        await this.page.waitForTimeout(10000) // Pause for 10 seconds
 
     }
 

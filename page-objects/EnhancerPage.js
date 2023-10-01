@@ -3,9 +3,9 @@ import { expect } from "@playwright/test"
 export class EnhancerPage {
     constructor(page){
         this.page = page
-        this.productsDropDown = page.locator('[class="H14B inline-flex items-center space-x-1.5 cursor-pointer px-3 py-2 rounded-lg transition hover:bg-blue-100 hover:text-blue-500 bg-blue-100 text-blue-500"]')
-        this.enhancerButton = page.locator('button:has-text("Enhancer")')
-        this.enhancerDemoImage = page.locator('//li[1]//button[1]//img[1]')
+        this.productsDropDown = page.locator('//div[@id="product-dropdown"]')
+        this.enhancerButton = page.locator('[id="enhance-button"]')
+        this.listEnhanceDemoImg = page.locator('//ul[@id="list-demo-img"]//li')
         this.enhancerDownloadButton = page.locator('[class="inline-flex items-center justify-center w-full py-3 px-4 bg-blue-500 rounded-lg text-base transition text-white hover:bg-opacity-80"]')
     }
 
@@ -29,10 +29,13 @@ export class EnhancerPage {
     }
 
     goToEnhancerEditPage = async () => {
-        const enhancerDemoImage =  this.enhancerDemoImage
+        const demoImg = this.listEnhanceDemoImg.first()
+        console.log(demoImg)
 
-        await enhancerDemoImage.waitFor()
-        await enhancerDemoImage.click()
+        await this.page.pause()
+
+        await demoImg.waitFor()
+        await demoImg.click()
     }
 
     downloadEnhancerFile = async () => {
