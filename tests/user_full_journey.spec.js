@@ -41,19 +41,19 @@ test.describe('suite 1', () => {
 
         enhancerPage.goToEnhancerPage()
     
-        await page.pause()
-        // await page.waitForTimeout(3000)
+        // await page.pause()
+        await page.waitForTimeout(3000)
     
         enhancerPage.goToEnhancerEditPage()
     
-        await page.pause() 
-        // await page.waitForTimeout(3000)
+        // await page.pause() 
+        await page.waitForTimeout(3000)
 
     
         enhancerPage.downloadEnhancerFile()
 
-        await page.pause()
-        // await page.waitForTimeout(3000)
+        // await page.pause()
+        await page.waitForTimeout(3000)
 
     
     })

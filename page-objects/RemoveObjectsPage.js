@@ -56,8 +56,6 @@ export class RemoveObjectsPage {
         await this.downloadButton.waitFor()
         await this.downloadButton.click()
 
-        await this.page.waitForTimeout(10000) // Pause for 10 seconds
-
     }
 
 
