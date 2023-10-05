@@ -21,7 +21,7 @@ export class RemoveWirePage {
         //wait the time out to hold on the button for 3 second
         // await this.page.waitForTimeout(2000);
 
-        //Click on Enhancer button in Dropdown list
+        //Click on Remove Wire button in Dropdown list
         await this.removeWireButton.waitFor()
         await this.removeWireButton.click()
 
