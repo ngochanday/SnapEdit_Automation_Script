@@ -1,6 +1,8 @@
 import { test } from "@playwright/test"
 import { RemoveObjectsPage } from "../page-objects/RemoveObjectsPage"
 import { EnhancerPage } from "../page-objects/EnhancerPage"
+import { RemoveBackgroundPage } from "../page-objects/RemoveBGPage"
+import { RemoveWirePage } from "../page-objects/RemoveWirePage"
 
 test.describe('suite 1', () => {
     test('Verify Remove Objects feature work correctly', async ({ page }) => {
@@ -35,9 +37,8 @@ test.describe('suite 1', () => {
 
     })
     
-    test.only('Verify Enhancer feature work correctly', async ({ page }) => {
+    test('Verify Enhancer feature work correctly', async ({ page }) => {
         const enhancerPage = new EnhancerPage(page)
-        // await page.goto("/enhance")
 
         enhancerPage.goToEnhancerPage()
     
@@ -56,6 +57,40 @@ test.describe('suite 1', () => {
         await page.waitForTimeout(3000)
 
     
+    })
+
+    test('Verify Remove BG feature work correctly', async ({ page }) => {
+        const removeBgPage = new RemoveBackgroundPage(page)
+
+        removeBgPage.goToRemoveBGPage()
+
+        await page.pause()
+
+        removeBgPage.goToRemoveBgEditPage()
+
+        await page.pause()
+
+        removeBgPage.downloadRemoveBgFile()
+
+        await page.pause()
+        
+    })
+
+    test.only('Verify Remove Wire Lines feature work correctly', async ({ page }) => {
+        const removeWire = new RemoveWirePage(page)
+
+        removeWire.goToRemoveWirePage()
+
+        await page.pause()
+
+        removeWire.goToRemoveWireEditPage()
+
+        await page.pause()
+
+        removeWire.downloadRemoveWireFile()
+
+        await page.pause()
+        
     })
 })
 
