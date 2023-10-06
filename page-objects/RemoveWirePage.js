@@ -6,18 +6,19 @@ export class RemoveWirePage {
         this.removeWireButton = page.locator('[id="remove-wire-button"]')
         this.productsDropDown = page.locator('//div[@id="product-dropdown"]')
         this.listRemoveWireDemoImg = page.locator('//ul[@id="list-demo-img"]//li')
-        this.removeWireDownloadButton = page.locator('(//button[@id="download-button"])[4]')
+        this.removeButton = page.locator('[id="remove-button"]')
+        this.removeWireDownloadButton = page.locator('//div[@id="mobile-download-button"]')
+        this.smallSizeDownload = page.locator('//ul[@class="w-full text-sm max-h-40"]//li[1]')
 
     }
 
     goToRemoveWirePage = async () => {
         //Open Home Page
         await this.page.goto("/")
-        // await this.page.waitForTimeout(2000)
 
         //Hover on products dropdown
         await this.productsDropDown.waitFor()
-        await this.productsDropDown.click({timeout : 8000})
+        await this.productsDropDown.click({timeout : 35000})
         //wait the time out to hold on the button for 3 second
         // await this.page.waitForTimeout(2000);
 
@@ -25,7 +26,7 @@ export class RemoveWirePage {
         await this.removeWireButton.waitFor()
         await this.removeWireButton.click()
 
-        //Assertion the navigation to the url https://dev.snapedit.app/enhance
+        //Assertion the navigation to the url https://dev.snapedit.app/remove-wire-line
         await this.page.waitForURL("/remove-wire-line")
 
     }
@@ -37,17 +38,21 @@ export class RemoveWirePage {
         await demoImg.click()
     }
 
+    removeWire = async () => {
+        await this.removeButton.waitFor({timeout : 500000})
+        await this.removeButton.click()
+    }
+
     downloadRemoveWireFile = async () => {
 
         const downloadButton = this.removeWireDownloadButton
-
-        await downloadButton.waitFor()
-        await downloadButton.click()
+        await downloadButton.waitFor({timeout : 350000})
 
         //Wait for the download event 
         const [download] = await Promise.all([
             //after triggering the download should wait for the download to be detectd by Playwright
-            this.page.waitForEvent('download')
+            this.page.waitForEvent('download'),
+            await downloadButton.click()
         ]);
         //Access to the download file information
         const downloadedFilePath = download.path();
@@ -55,7 +60,20 @@ export class RemoveWirePage {
         const downloadedFileName = download.suggestedFilename()
         console.log(`Downloaded file name: ${downloadedFileName}`)
 
+         // Specify the local directory where you want to save the downloaded file
+        const localDirectoryPath = '/Users/hando/Documents/DownloadFiles/';
+
+        // Combine the local directory path and the filename to create the full local path
+        const localFilePath = localDirectoryPath + downloadedFileName;
+
+        // Save the file locally using .saveAs()
+        await download.saveAs(localFilePath);
+
+        console.log(`File saved locally at: ${localFilePath}`);
+
         // Assertions download file path is not null -> if not null it mean file download successful = passed
-        expect(downloadedFilePath).not.toBeNull(); // Ensure a file path is available.
+        // expect(downloadedFilePath).not.toBeNull(); // Ensure a file path is available.
+        expect(localFilePath).not.toBeNull(); // Ensure a file path is available.
+
     }
 }

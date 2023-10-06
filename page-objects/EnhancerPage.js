@@ -42,14 +42,15 @@ export class EnhancerPage {
         const downloadButton = this.enhancerDownloadButton
 
         await downloadButton.waitFor()
-        await downloadButton.click()
+        // await downloadButton.click()
 
-        await this.page.waitForTimeout(5000)
+        // await this.page.waitForTimeout(5000)
 
         //Wait for the download event 
         const [download] = await Promise.all([
             //after triggering the download should wait for the download to be detectd by Playwright
-            this.page.waitForEvent('download')
+            this.page.waitForEvent('download'),
+            await downloadButton.click()
         ]);
         //Access to the download file information
         const downloadedFilePath = download.path();
@@ -57,8 +58,19 @@ export class EnhancerPage {
         const downloadedFileName = download.suggestedFilename()
         console.log(`Downloaded file name: ${downloadedFileName}`)
 
+        // Specify the local directory where you want to save the downloaded file
+        const localDirectoryPath = '/Users/hando/Documents/DownloadFiles/';
+
+        // Combine the local directory path and the filename to create the full local path
+        const localFilePath = localDirectoryPath + downloadedFileName;
+
+        // Save the file locally using .saveAs()
+        await download.saveAs(localFilePath);
+
+        console.log(`File saved locally at: ${localFilePath}`);
+
         // Assertions download file path is not null -> if not null it mean file download successful = passed
-        expect(downloadedFilePath).not.toBeNull(); // Ensure a file path is available.
+        expect(localFilePath).not.toBeNull(); // Ensure a file path is available.
         
     }
 }

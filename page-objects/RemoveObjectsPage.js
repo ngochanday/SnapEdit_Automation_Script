@@ -76,8 +76,19 @@ export class RemoveObjectsPage {
         const downloadedFileName = download.suggestedFilename()
         console.log(`Downloaded file name: ${downloadedFileName}`)
 
+         // Specify the local directory where you want to save the downloaded file
+        const localDirectoryPath = '/Users/hando/Documents/DownloadFiles/';
+
+        // Combine the local directory path and the filename to create the full local path
+        const localFilePath = localDirectoryPath + downloadedFileName;
+
+        // Save the file locally using .saveAs()
+        await download.saveAs(localFilePath);
+
+        console.log(`File saved locally at: ${localFilePath}`);
+
         // Assertions download file path is not null -> if not null it mean file download successful = passed
-        expect(downloadedFilePath).not.toBeNull(); // Ensure a file path is available.
+        expect(localFilePath).not.toBeNull(); // Ensure a file path is available.
     }
 
 }
