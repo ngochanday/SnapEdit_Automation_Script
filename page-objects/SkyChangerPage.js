@@ -22,7 +22,7 @@ export class SkyChangerPage {
         //wait the time out to hold on the button for 3 second
         // await this.page.waitForTimeout(2000);
 
-        //Click on Remove BG button in Dropdown list
+        //Click on Sky Changer button in Dropdown list
         await this.skyChangerButton.waitFor()
         await this.skyChangerButton.click()
 

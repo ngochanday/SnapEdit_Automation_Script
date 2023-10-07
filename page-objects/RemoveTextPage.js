@@ -20,11 +20,11 @@ export class RemoveTextPage {
         //wait the time out to hold on the button for 3 second
         // await this.page.waitForTimeout(2000);
 
-        //Click on Remove Wire button in Dropdown list
+        //Click on Remove Text button in Dropdown list
         await this.removeTextButton.waitFor()
         await this.removeTextButton.click()
 
-        //Assertion the navigation to the url https://dev.snapedit.app/remove-wire-line
+        //Assertion the navigation to the url https://dev.snapedit.app/remove-text
         await this.page.waitForURL("/remove-text")
 
     }
