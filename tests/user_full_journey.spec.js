@@ -3,58 +3,35 @@ import { RemoveObjectsPage } from "../page-objects/RemoveObjectsPage"
 import { EnhancerPage } from "../page-objects/EnhancerPage"
 import { RemoveBackgroundPage } from "../page-objects/RemoveBGPage"
 import { RemoveWirePage } from "../page-objects/RemoveWirePage"
+import { RemoveTextPage } from "../page-objects/RemoveTextPage"
+import { SkyChangerPage } from "../page-objects/SkyChangerPage"
 
 test.describe('Test suite: SnapEdit Website feature flow', () => {
     test('Verify Remove Objects feature work correctly', async ({ page }) => {
         const removeObjectsPage = new RemoveObjectsPage(page)
-        removeObjectsPage.visit()
-    
-        // await page.pause()
-        await page.waitForTimeout(3000)
 
+        await removeObjectsPage.visit()
     
-        removeObjectsPage.goToEditPage()
-    
-        // await page.pause()
-        await page.waitForTimeout(3000)
+        await removeObjectsPage.goToEditPage()
 
+        await removeObjectsPage.useAutoAI()
     
-        removeObjectsPage.useAutoAI()
-    
-        // await page.pause()
-        await page.waitForTimeout(3000)
-    
-        removeObjectsPage.removeObjects()
-    
-        // await page.pause()
-        await page.waitForTimeout(10000)
+        await removeObjectsPage.removeObjects()
 
-
-        removeObjectsPage.downloadFile()
-    
-        // await page.pause()
-        await page.waitForTimeout(3000)
+        await removeObjectsPage.downloadFile()
 
     })
     
     test.skip('Verify Enhancer feature work correctly', async ({ page }) => {
         const enhancerPage = new EnhancerPage(page)
 
-        enhancerPage.goToEnhancerPage()
+        await enhancerPage.goToEnhancerPage()
     
-        // await page.pause()
         await page.waitForTimeout(3000)
     
-        enhancerPage.goToEnhancerEditPage()
-    
-        await page.pause() 
-        // await page.waitForTimeout(3000)
-
-    
-        enhancerPage.downloadEnhancerFile()
-
-        // await page.pause()
-        await page.waitForTimeout(3000)
+        await enhancerPage.goToEnhancerEditPage()
+  
+        await enhancerPage.downloadEnhancerFile()
 
     
     })
@@ -62,49 +39,50 @@ test.describe('Test suite: SnapEdit Website feature flow', () => {
     test('Verify Remove BG feature work correctly', async ({ page }) => {
         const removeBgPage = new RemoveBackgroundPage(page)
 
-        removeBgPage.goToRemoveBGPage()
+        await removeBgPage.goToRemoveBGPage()
 
-        // await page.pause()
+        await removeBgPage.goToRemoveBgEditPage()
+
         await page.waitForTimeout(3000)
 
-
-        removeBgPage.goToRemoveBgEditPage()
-
-        // await page.pause()
-        await page.waitForTimeout(3000)
-
-
-        removeBgPage.downloadRemoveBgFile()
-
-        // await page.pause()
-        await page.waitForTimeout(3000)
-
+        await removeBgPage.downloadRemoveBgFile()
         
     })
 
     test('Verify Remove Wire Lines feature work correctly', async ({ page }) => {
         const removeWire = new RemoveWirePage(page)
 
-        removeWire.goToRemoveWirePage()
+        await removeWire.goToRemoveWirePage()
 
-        // await page.pause()
-        await page.waitForTimeout(3000)
+        await removeWire.goToRemoveWireEditPage()
 
-        removeWire.goToRemoveWireEditPage()
+        await removeWire.removeWire()
 
-        // await page.pause()
-        await page.waitForTimeout(3000)
+        await removeWire.downloadRemoveWireFile()
 
-        removeWire.removeWire()
+    })
 
-        // await page.pause()
+    test('Verify Remove Text feature work correctly', async ({ page }) => {
+        const removeText = new RemoveTextPage(page)
 
-        removeWire.downloadRemoveWireFile()
+        await removeText.goToRemoveTextPage()
 
-        // await page.pause()
-        await page.waitForTimeout(3000)
+        await removeText.goToRemoveTextEditPage()
 
-        
+        await removeText.removeText()
+
+        await removeText.downloadRemoveTextFile()
+
+    })
+
+    test.only('Verify Sky Changer feature work correctly', async ({page}) => {
+        const skyChanger = new SkyChangerPage(page)
+
+        await skyChanger.goToSkyChangerPage()
+
+        await skyChanger.goToSkyChangerEditPage()
+
+        await skyChanger.downloadSkyChangerFile()
     })
 })
 

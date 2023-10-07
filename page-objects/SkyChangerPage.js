@@ -1,16 +1,17 @@
 import { test, expect } from "@playwright/test"
 
-export class RemoveBackgroundPage {
+export class SkyChangerPage {
     constructor(page){
         this.page = page
-        this.removeBgButton = page.locator('[id="remove-bg-button"]')
+        this.skyChangerButton = page.locator('[id="change-sky-button"]')
         this.productsDropDown = page.locator('//div[@id="product-dropdown"]')
         this.listRemoveBgDemoImg = page.locator('//ul[@id="list-demo-img"]//li')
-        this.removeBgDownloadButton = page.locator('(//button[@id="download-button"])[4]')
+        this.skyChangerDownloadButton = page.locator('(//button[@id="download-button"])[4]')
+        this.skyChangerPreview = page.locator('(//canvas)[4]')
 
     }
 
-    goToRemoveBGPage = async () => {
+    goToSkyChangerPage = async () => {
         //Open Home Page
         await this.page.goto("/")
         // await this.page.waitForTimeout(2000)
@@ -22,26 +23,27 @@ export class RemoveBackgroundPage {
         // await this.page.waitForTimeout(2000);
 
         //Click on Remove BG button in Dropdown list
-        await this.removeBgButton.waitFor()
-        await this.removeBgButton.click()
+        await this.skyChangerButton.waitFor()
+        await this.skyChangerButton.click()
 
-        //Assertion the navigation to the url https://dev.snapedit.app/enhance
-        await this.page.waitForURL("/remove-bg")
+        //Assertion the navigation to the url https://dev.snapedit.app/change-sky
+        await this.page.waitForURL("/change-sky")
 
     }
 
-    goToRemoveBgEditPage = async () => {
+    goToSkyChangerEditPage = async () => {
         const demoImg = this.listRemoveBgDemoImg.first({timeout : 350000})
         console.log(demoImg)
         await demoImg.waitFor()
         await demoImg.click()
     }
 
-    downloadRemoveBgFile = async () => {
+    downloadSkyChangerFile = async () => {
+        await this.skyChangerPreview.waitFor({timeout : 600000})
 
-        const downloadButton = this.removeBgDownloadButton
+        const downloadButton = this.skyChangerDownloadButton
 
-        await downloadButton.waitFor({timeout : 50000})
+        await downloadButton.waitFor({timeout : 60000})
         // await downloadButton.click()
 
         //Wait for the download event 
