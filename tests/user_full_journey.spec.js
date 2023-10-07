@@ -6,7 +6,7 @@ import { RemoveWirePage } from "../page-objects/RemoveWirePage"
 import { RemoveTextPage } from "../page-objects/RemoveTextPage"
 import { SkyChangerPage } from "../page-objects/SkyChangerPage"
 
-test('Verify Remove Objects feature work correctly', async ({ page }) => {
+test('Verify Remove Objects feature work and user able to download file', async ({ page }) => {
     const removeObjectsPage = new RemoveObjectsPage(page)
 
     await removeObjectsPage.visit()
@@ -21,7 +21,7 @@ test('Verify Remove Objects feature work correctly', async ({ page }) => {
 
 })
     
-test.skip('Verify Enhancer feature work correctly', async ({ page }) => {
+test('Verify Enhancer feature work and user able to download file', async ({ page }) => {
     const enhancerPage = new EnhancerPage(page)
 
     await enhancerPage.goToEnhancerPage()
@@ -34,7 +34,7 @@ test.skip('Verify Enhancer feature work correctly', async ({ page }) => {
 
 })
 
-test('Verify Remove BG feature work correctly', async ({ page }) => {
+test('Verify Remove BG feature work and user able to download file', async ({ page }) => {
     const removeBgPage = new RemoveBackgroundPage(page)
 
     await removeBgPage.goToRemoveBGPage()
@@ -47,7 +47,7 @@ test('Verify Remove BG feature work correctly', async ({ page }) => {
         
     })
 
-test('Verify Remove Wire Lines feature work correctly', async ({ page }) => {
+test('Verify Remove Wire Lines feature work and user able to download file', async ({ page }) => {
     const removeWire = new RemoveWirePage(page)
 
     await removeWire.goToRemoveWirePage()
@@ -60,7 +60,7 @@ test('Verify Remove Wire Lines feature work correctly', async ({ page }) => {
 
 })
 
-test('Verify Remove Text feature work correctly', async ({ page }) => {
+test('Verify Remove Text feature work and user able to download file', async ({ page }) => {
     const removeText = new RemoveTextPage(page)
 
     await removeText.goToRemoveTextPage()
@@ -73,7 +73,7 @@ test('Verify Remove Text feature work correctly', async ({ page }) => {
 
 })
 
-test.only('Verify Sky Changer feature work correctly', async ({page}) => {
+test.only('Verify Sky Changer feature work and user able to download file', async ({page}) => {
     const skyChanger = new SkyChangerPage(page)
 
     await skyChanger.goToSkyChangerPage()

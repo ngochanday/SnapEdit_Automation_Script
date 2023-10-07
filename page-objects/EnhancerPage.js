@@ -32,7 +32,7 @@ export class EnhancerPage {
 
     goToEnhancerEditPage = async () => {
         const demoImg = this.listEnhanceDemoImg.first({timeout : 350000})
-        console.log(demoImg)
+        // console.log(demoImg)
         await demoImg.waitFor()
         await demoImg.click()
     }

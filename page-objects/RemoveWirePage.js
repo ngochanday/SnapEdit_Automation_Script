@@ -33,7 +33,7 @@ export class RemoveWirePage {
 
     goToRemoveWireEditPage = async () => {
         const demoImg = this.listRemoveWireDemoImg.first({timeout : 350000})
-        console.log(demoImg)
+        // console.log(demoImg)
         await demoImg.waitFor()
         await demoImg.click()
     }

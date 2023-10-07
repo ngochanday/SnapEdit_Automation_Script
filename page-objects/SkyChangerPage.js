@@ -33,7 +33,7 @@ export class SkyChangerPage {
 
     goToSkyChangerEditPage = async () => {
         const demoImg = this.listRemoveBgDemoImg.first({timeout : 350000})
-        console.log(demoImg)
+        // console.log(demoImg)
         await demoImg.waitFor()
         await demoImg.click()
     }

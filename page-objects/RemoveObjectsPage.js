@@ -33,7 +33,7 @@ export class RemoveObjectsPage {
 
         await this.objectFounded.waitFor()
         const text = await this.objectFounded.innerText()
-        console.warn(text)
+        // console.warn(text)
 
         //Assertion: verify autoAI return objects successfully
         expect (this.objectFounded).toHaveText("5 objects has been found")
