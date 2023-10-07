@@ -4,6 +4,7 @@ import { EnhancerPage } from "../page-objects/EnhancerPage"
 import { RemoveBackgroundPage } from "../page-objects/RemoveBGPage"
 import { RemoveWirePage } from "../page-objects/RemoveWirePage"
 import { RemoveTextPage } from "../page-objects/RemoveTextPage"
+import { RestorePage } from "../page-objects/RestorePage"
 import { SkyChangerPage } from "../page-objects/SkyChangerPage"
 
 test('Verify Remove Objects feature work and user able to download file', async ({ page }) => {
@@ -73,7 +74,20 @@ test('Verify Remove Text feature work and user able to download file', async ({ 
 
 })
 
-test.only('Verify Sky Changer feature work and user able to download file', async ({page}) => {
+test.only('Verify Restore Old Image feature work and user able to download file', async ({ page }) => {
+    const restoreImg = new RestorePage(page)
+
+    await restoreImg.goToRestorePage()
+    
+    await page.waitForTimeout(3000)
+    
+    await restoreImg.goToRestoreEditPage()
+
+    await restoreImg.downloadRestorerFile()
+
+})
+
+test('Verify Sky Changer feature work and user able to download file', async ({page}) => {
     const skyChanger = new SkyChangerPage(page)
 
     await skyChanger.goToSkyChangerPage()
