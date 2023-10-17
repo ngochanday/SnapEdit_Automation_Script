@@ -7,7 +7,7 @@ import { RemoveTextPage } from "../page-objects/RemoveTextPage"
 import { RestorePage } from "../page-objects/RestorePage"
 import { SkyChangerPage } from "../page-objects/SkyChangerPage"
 
-test('Verify Remove Objects feature work and user able to download file', async ({ page }) => {
+test.only('Verify Remove Objects feature work and user able to download file', async ({ page }) => {
     const removeObjectsPage = new RemoveObjectsPage(page)
 
     await removeObjectsPage.visit()
@@ -74,7 +74,7 @@ test('Verify Remove Text feature work and user able to download file', async ({ 
 
 })
 
-test.only('Verify Restore Old Image feature work and user able to download file', async ({ page }) => {
+test('Verify Restore Old Image feature work and user able to download file', async ({ page }) => {
     const restoreImg = new RestorePage(page)
 
     await restoreImg.goToRestorePage()
