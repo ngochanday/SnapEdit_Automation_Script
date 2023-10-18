@@ -14,7 +14,7 @@ export class RemoveWirePage {
 
     goToRemoveWirePage = async () => {
         //Open Home Page
-        await this.page.goto("/")
+        // await this.page.goto("/")
 
         //Hover on products dropdown
         await this.productsDropDown.waitFor()

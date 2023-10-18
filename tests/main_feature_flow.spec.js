@@ -6,11 +6,17 @@ import { RemoveWirePage } from "../page-objects/RemoveWirePage"
 import { RemoveTextPage } from "../page-objects/RemoveTextPage"
 import { RestorePage } from "../page-objects/RestorePage"
 import { SkyChangerPage } from "../page-objects/SkyChangerPage"
+import { LoginPage } from "../page-objects/LoginPage"
 
-test.only('Verify Remove Objects feature work and user able to download file', async ({ page }) => {
+test('Go to Home Page', async ({ page }) => {
+    const removeObjectsPage = new RemoveObjectsPage(page)
+    await removeObjectsPage.visit()
+})
+
+test('Verify Remove Objects feature work and user able to download file', async ({ page }) => {
     const removeObjectsPage = new RemoveObjectsPage(page)
 
-    await removeObjectsPage.visit()
+    // await removeObjectsPage.visit()
     
     await removeObjectsPage.goToEditPage()
 
@@ -98,5 +104,12 @@ test('Verify Sky Changer feature work and user able to download file', async ({p
 
 })
 
+test('Verify user can login by use GG account', async ({page}) => {
+    const loginPage = new LoginPage(page)
+
+    await page.goto("/")
+
+    await loginPage.gotoLoginPage()
+})
 
 
