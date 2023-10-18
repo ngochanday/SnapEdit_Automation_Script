@@ -8,10 +8,16 @@ import { RestorePage } from "../page-objects/RestorePage"
 import { SkyChangerPage } from "../page-objects/SkyChangerPage"
 import { LoginPage } from "../page-objects/LoginPage"
 
-test('Verify Remove Objects feature work and user able to download file', async ({ page }) => {
+// test hook -> run this test before each test
+test.beforeEach('Go to Homepage', async ({page}) => {
+    const removeObjectsPage = new RemoveObjectsPage(page)
+    await removeObjectsPage.visit()
+})
+
+test.only('Verify Remove Objects feature work and user able to download file', async ({ page }) => {
     const removeObjectsPage = new RemoveObjectsPage(page)
 
-    await removeObjectsPage.visit()
+    // await removeObjectsPage.visit()
     
     await removeObjectsPage.goToEditPage()
 
@@ -99,7 +105,7 @@ test('Verify Sky Changer feature work and user able to download file', async ({p
 
 })
 
-test.only('Verify user can login by use GG account', async ({page}) => {
+test('Verify user can login by use GG account', async ({page}) => {
     const loginPage = new LoginPage(page)
 
     await page.goto("/")
