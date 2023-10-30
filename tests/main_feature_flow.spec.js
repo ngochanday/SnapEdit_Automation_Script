@@ -14,7 +14,7 @@ test.beforeEach('Go to Homepage', async ({page}) => {
     await removeObjectsPage.visit()
 })
 
-test.only('Verify Remove Objects feature work and user able to download file', async ({ page }) => {
+test('Verify Remove Objects feature work and user able to download file', async ({ page }) => {
     const removeObjectsPage = new RemoveObjectsPage(page)
 
     // await removeObjectsPage.visit()
@@ -105,10 +105,10 @@ test('Verify Sky Changer feature work and user able to download file', async ({p
 
 })
 
-test('Verify user can login by use GG account', async ({page}) => {
+test.only('Verify user can login by use GG account', async ({page}) => {
     const loginPage = new LoginPage(page)
 
-    await page.goto("/")
+    // await page.goto("/")
 
     await loginPage.gotoLoginPage()
 })
