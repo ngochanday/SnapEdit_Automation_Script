@@ -108,11 +108,7 @@ test('Verify Sky Changer feature work and user able to download file', async ({p
 test.only('Verify user can login by use GG account', async ({page}) => {
     const loginPage = new LoginPage(page)
 
-    // await page.goto("/")
-
-    // await loginPage.gotoLoginPage()
-
-    await loginPage.googleLogin()
+    await loginPage.gotoLoginPage()
 })
 
 

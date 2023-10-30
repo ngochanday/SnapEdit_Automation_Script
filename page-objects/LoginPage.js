@@ -32,11 +32,13 @@ export class LoginPage {
             await popup.goto(authorizeURL);
             const emailInput = await popup.$('[id="identifierId"]')
             await emailInput.focus()
-            await emailInput.type("contact.magiccut.app", {delay : 800})
-            await emailInput.type("@gmail.com", {delay : 500})
+            await emailInput.type("contact.magiccut.app", {delay : 100})
+            await emailInput.type("@gmail.com", {delay : 100})
 
             const nextBtn = await popup.$('[id="identifierNext"]')
             await nextBtn.click()
+
+            await popup.pause()
 
             // Close the popup when done.
             await popup.close();
