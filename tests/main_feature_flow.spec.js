@@ -110,7 +110,9 @@ test.only('Verify user can login by use GG account', async ({page}) => {
 
     // await page.goto("/")
 
-    await loginPage.gotoLoginPage()
+    // await loginPage.gotoLoginPage()
+
+    await loginPage.googleLogin()
 })
 
 
